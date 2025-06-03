@@ -21,15 +21,18 @@ export class LoginComponent {
 
     login() {
         this.authService.login(this.userEmail, this.password).subscribe({
-            next: (res) => {
-                console.log('Login realizado:', res);
-                localStorage.setItem('token', res.token);
-                localStorage.setItem('user', JSON.stringify(res.user));
-                this.router.navigate(['/']);
+            next: (user) => {
+                if (user) {
+                    console.log('Login realizado:', user);
+                    this.router.navigate(['/']);
+                } else {
+                    alert('Falha ao obter perfil do usuário após login.');
+                }
             },
-            error: (err) => {
+            error: () => {
                 alert('E-mail ou senha inválidos');
             }
         });
     }
+
 }
