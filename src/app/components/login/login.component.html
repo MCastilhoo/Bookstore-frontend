@@ -3,12 +3,12 @@
         <h2 class="login-title">Login</h2>
 
         <div class="input-group">
-            <input type="Email" placeholder="Insira seu e-mail" class="login-input">
+            <input type="email" [(ngModel)]="userEmail" placeholder="Insira seu e-mail" class="login-input">
         </div>
         <div class="input-group">
-            <input type="password" placeholder="Insira sua senha" class="login-input">
+            <input type="password" [(ngModel)]="password" placeholder="Insira sua senha" class="login-input">
         </div>
-        <button class="login-button">Entrar</button>
+        <button class="login-button" (click)="login()">Entrar</button>
         <p style="text-align: center; font-size: 13px;">
             Não tem cadastro?
             <a routerLink="/register" style="color: var(--secondary-color); text-decoration: underline;">Cadastre-se</a>

@@ -12,10 +12,3 @@ export const routes = [
   { path: 'register', component:  RegisterComponent}
 
 ];
-
-bootstrapApplication(HomeComponent, {
-  providers: [
-    provideRouter(routes)
-  ]
-});
-
