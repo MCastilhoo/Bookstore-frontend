@@ -1,22 +1,91 @@
 <div class="register-container">
-    <div class="register-box">
-        <h2 class="register-title">Registre-se</h2>
-        <div class="input-group">
-            <input type="text" placeholder="Insira seu primeiro nome" class="register-input">
-        </div>
-        <div class="input-group">
-            <input type="text" placeholder="Insira seu sobrenome" class="register-input">
-        </div>
-        <div class="input-group">
-            <input type="Email" placeholder="Insira seu e-mail" class="register-input">
-        </div>
-        <div class="input-group">
-            <input type="password" placeholder="Insira sua senha" class="register-input">
-        </div>
-        <button class="register-button">Registrar-se</button>
-        <p style="text-align: center; font-size: 13px;">
-            Já tem uma conta?
-            <a routerLink="/login" style="color: var(--secondary-color); text-decoration: underline;">Login</a>
-        </p>
+  <div class="register-box">
+    <h2 class="register-title">Registre-se</h2>
+
+    <!-- CAMPO: Primeiro Nome -->
+    <div class="input-group">
+      <input
+        type="text"
+        placeholder="Insira seu primeiro nome"
+        class="register-input"
+        [(ngModel)]="firstName"
+        name="firstName"
+        #firstNameField="ngModel"
+        required
+      />
+      <!-- Erro se o campo estiver vazio -->
+      <div class="error" *ngIf="firstNameField.invalid && firstNameField.touched">
+        Este campo é obrigatório.
+      </div>
     </div>
+
+    <!-- CAMPO: Sobrenome -->
+    <div class="input-group">
+      <input
+        type="text"
+        placeholder="Insira seu sobrenome"
+        class="register-input"
+        [(ngModel)]="lastName"
+        name="lastName"
+        #lastNameField="ngModel"
+        required
+      />
+      <div class="error" *ngIf="lastNameField.invalid && lastNameField.touched">
+        Este campo é obrigatório.
+      </div>
+    </div>
+
+    <!-- CAMPO: E-mail -->
+    <div class="input-group">
+      <input
+        type="email"
+        placeholder="Insira seu e-mail"
+        class="register-input"
+        [(ngModel)]="userEmail"
+        name="userEmail"
+        #emailField="ngModel"
+        required
+      />
+      <!-- Erro de campo obrigatório -->
+      <div class="error" *ngIf="emailField.errors?.['required'] && emailField.touched">
+        Este campo é obrigatório.
+      </div>
+
+      <div class="error" *ngIf="apiError">
+        {{ apiError }}
+      </div>
+    </div>
+
+    <!-- CAMPO: Senha -->
+    <div class="input-group">
+      <input
+        type="password"
+        placeholder="Insira sua senha"
+        class="register-input"
+        [(ngModel)]="password"
+        name="password"
+        #passwordField="ngModel"
+        required
+      />
+      <div class="error" *ngIf="passwordField.invalid && passwordField.touched">
+        Este campo é obrigatório
+      </div>
+    </div>
+
+    <!-- BOTÃO DE REGISTRO -->
+    <button class="register-button" type="button" (click)="register()">
+      Registrar-se
+    </button>
+
+    <!-- LINK PARA LOGIN -->
+    <p style="text-align: center; font-size: 13px;">
+      Já tem uma conta?
+      <a
+        routerLink="/login"
+        style="color: var(--secondary-color); text-decoration: underline;"
+      >
+        Login
+      </a>
+    </p>
+  </div>
 </div>

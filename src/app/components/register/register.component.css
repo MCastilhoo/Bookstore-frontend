@@ -3,7 +3,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to righ, #e6ecf5, #f3f6fb);
 }
 
 .register-box {
@@ -28,6 +27,7 @@
     position: relative;
 }
 
+
 .register-input {
     width: 100%;
     box-sizing: border-box;
@@ -38,6 +38,7 @@
 }
 
 .register-button {
+    width: 100%;
     background-color: var(--secondary-color);
     color:white;
     border: none;
@@ -45,4 +46,11 @@
     padding: 12px;
     font-size: 15px;
     cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-left: 5px;
 }
