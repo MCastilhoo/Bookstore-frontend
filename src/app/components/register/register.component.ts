@@ -30,6 +30,14 @@ export class RegisterComponent {
             .register(this.firstName, this.lastName, this.userEmail, this.password)
             .subscribe({
                 next: () => {
+                    const newUser ={
+                        firstName: this.firstName,
+                        lastName: this.lastName,
+                        userEmail: this.userEmail
+                    };
+
+                    this.authService.userSignal.set(newUser);
+                    localStorage.setItem('user', JSON.stringify(newUser))
                     this.router.navigate(['/login']);
                 },
                 error: (err) => {

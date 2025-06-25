@@ -4,5 +4,10 @@
     </div>
     <a routerLink="/"> Início </a>
     <a routerLink="/catalog"> Catálogo </a>
-    <button class="button" routerLink="/login"> Entrar </button>
+
+    <ng-container *ngIf="user() as currentUser; ">
+        <span>Olá, {{ currentUser.firstName }} </span>
+
+    </ng-container>
+    <button *ngIf="!isLoggedIn()" class="button" routerLink="/login"> Entrar </button>
 </header>
