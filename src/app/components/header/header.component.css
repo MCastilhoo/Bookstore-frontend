@@ -10,6 +10,16 @@
 .logo-img{
     height: 60px;
 }
+
+.user-trigger {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 6px 12px;
+    color: var(--primary-color);
+}
+
 .button{
     border: none;
     border-radius: 5px;
