@@ -19,34 +19,33 @@
                 </div>
             </div>
             <label for="titulo" class="form-label">Título</label>
-            <input id="titulo" formControlName="titulo" type="text" class="form-input" />
+            <input id="titulo" formControlName="title" type="text" class="form-input" />
             <label for="autor" class="form-label">Autor</label>
-            <input id="autor" formControlName="autor" type="text" class="form-input" />
+            <input id="autor" formControlName="author" type="text" class="form-input" />
             <label for="descricao" class="form-label">Descrição</label>
-            <textarea id="descricao" formControlName="descricao" class="form-textarea"></textarea>
+            <textarea id="descricao" formControlName="description" class="form-textarea"></textarea>
 
             <div class="row">
                 <div class="field">
                     <label for="paginas" class="form-label">N° de páginas</label>
-                    <input type="number" id="paginas" name="paginas" class="form-input">
+                    <input type="number" id="pages" name="paginas" class="form-input">
                 </div>
                 <div class="field">
                     <label for="preco" class="form-label">Preço</label>
-                    <input type="number" step="0.01" id="preco" name="preco" class="form-input">
+                    <input type="number" step="0.01" id="price" name="preco" class="form-input">
                 </div>
                 <div class="field">
                     <label for="quantidade" class="form-label">Quantidade</label>
-                    <input type="number" id="quantidade" name="quantidade" class="form-input">
+                    <input type="number" id="quantity" name="quantidade" class="form-input">
                 </div>
             </div>
 
             <label for="categoria" class="form-label">Categoria</label>
-            <select name="categoria" id="categoria" class="form-input">
+            <select name="categoria" id="genre" class="form-input">
                 <option value="">Selecione uma categoria</option>
-                <option value="ficcao">Ficção</option>
-                <option value="nao-ficcao">Não Ficção</option>
-                <option value="biografia">Biografia</option>
-                <option value="educacional">Educacional</option>
+                <option *ngFor="let genre of genres" [value]="genre.id">
+                    {{ genre.genre }}
+                </option>
             </select>
             <button type="submit" class="submit-button">Criar</button>
         </form>

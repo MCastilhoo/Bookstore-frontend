@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { GenreService } from '../services/genre.service';
+import { Genre } from '../interface/genres-interface';
 
 @Component({
   selector: 'app-create-book',
@@ -9,17 +11,38 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './create-book.component.html',
   styleUrl: './create-book.component.css'
 })
-export class CreateBookComponent {
+export class CreateBookComponent implements OnInit{
   bookForm: FormGroup;
   selectedImage: File | null = null;
   previewUrl: string | ArrayBuffer | null = null;
   selectedFileName: string | null = null
 
-  constructor(private fb: FormBuilder) {
+  genres: Genre[] = []
+
+  constructor(private fb: FormBuilder, private genreService: GenreService) {
     this.bookForm = this.fb.group({
-      titulo: ['', Validators.required],
-      autor: ['', Validators.required],
-      descricao: ['', Validators.required]
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      description: ['', Validators.required],
+      pages: [null, [Validators.required, Validators.min(1)]],
+      price: [null, [Validators.required, Validators.min(0)]],
+      quantity: [null, [Validators.required, Validators.min(1)]],
+      genre: ['', Validators.required]
+    });
+  }
+
+  ngOnInit(): void {
+      this.loadGenres()
+  }
+
+  loadGenres() {
+    this.genreService.getGenres().subscribe({
+      next: (data) => {
+        this.genres = data;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar gêneros:', err);
+      }
     });
   }
   onFileSelected(event: Event) {
@@ -27,7 +50,7 @@ export class CreateBookComponent {
     if (input.files && input.files.length > 0) {
       this.selectedImage = input.files[0]
       this.selectedFileName = this.selectedImage.name
-      
+
       const reader = new FileReader();
       reader.onload = () => {
         this.previewUrl = reader.result
@@ -37,7 +60,7 @@ export class CreateBookComponent {
   }
 
   onSubmit() {
-    if (this.bookForm.valid){
+    if (this.bookForm.valid) {
       const bookData = {
         ...this.bookForm.value,
         capa: this.selectedImage
