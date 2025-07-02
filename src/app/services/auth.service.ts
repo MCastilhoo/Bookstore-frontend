@@ -99,11 +99,17 @@ export class AuthService {
             return {
                 firstName: decoded.firstName,
                 lastName: decoded.lastName,
-                userEmail: decoded.email
+                userEmail: decoded.email,
+                authorization: decoded.authorization
             };
         } catch (e) {
             console.error('Erro ao decodificar token:', e);
             return null;
         }
     }
+
+    isAdmin = computed(() => {
+        const user = this.userSignal();
+        return user?.authorization?.includes('ADMIN') ?? false;
+    })
 }
