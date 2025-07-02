@@ -1,0 +1,22 @@
+.confirmation-container {
+    display: flex;
+    height: 50vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation-img {
+    width: 15vh;
+}
+
+.confirmation-title {
+    font-size: 45px;
+    margin-bottom: -30px;
+}
+
+.confirmation-paragraph {
+    font-size: 20px;
+    margin-top: 40px;
+
+}
