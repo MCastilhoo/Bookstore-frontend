@@ -1,0 +1,152 @@
+.modal-container {
+  background-color: var(--primary-color);
+  border-radius: 16px;
+}
+
+.modal-header {
+    background-color: var(--secondary-color);
+    padding: 1.5rem 2rem;
+    position: relative;
+
+    h2 {
+        font-family: 'Playfair Display', serif; 
+        font-size: 1.8rem; 
+        margin: 0; 
+        color: var(--tertiary-color);
+        font-weight: 500;
+    }
+    
+    p {
+        color: #fff; 
+        margin: 5px 0 0;
+        font-size: 0.85rem;
+        opacity: 0.9;
+    }
+
+    .close-icon {
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: rgba(255,255,255,0.5);
+        cursor: pointer;
+
+        &:hover{color: var(--tertiary-color)}
+    }
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.field-row {
+    display: flex;
+    gap: 1rem;
+    .field{ flex: 1;}
+}
+
+.fields-section {
+    .field { margin-bottom: 1rem;}
+}
+
+.preview-card {
+  width: 100%;
+  height: 240px;
+  background: #f4f4f4;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.preview-card.has-image {
+    border: none;
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--quarteary-color);
+  color: #444;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background: rgba(201, 146, 62, 0.1);
+  }
+}
+
+.fields-section {
+  .field {
+    margin-bottom: 1rem;
+  }
+  label {
+    display: block;
+    font-family: "Playfair Display", serif;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+  input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cdcdcd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+}
+
+input, textarea:focus{outline: none;}
+textarea {resize: none;}
+
+
+.actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid #e0e0e0e0;
+
+    .btn-link {
+        background: none;
+        border: none;
+        color: #555;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+.btn-primary {
+  background-color: var(--quarteary-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

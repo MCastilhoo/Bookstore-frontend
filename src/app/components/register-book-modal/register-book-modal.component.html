@@ -1,0 +1,63 @@
+<div class="modal-container">
+  <header class="modal-header">
+    <div class="header-content">
+      <h2>Novo Exemplar</h2>
+      <p>Adicione uma nova obra ao catálogo da Livros & Letras</p>
+    </div>
+    <button class="close-icon" (click)="cancel()">&times;</button>
+  </header>
+
+  <form [formGroup]="bookForm" (ngSubmit)="save()">
+    <div class="content-grid">
+      <div class="upload-section">
+        <div class="preview-card" [class.has-image]="coverPreview">
+          <img *ngIf="coverPreview" [src]="coverPreview" alt="Capa" />
+          <span *ngIf="!coverPreview">Capa do Livro</span>
+        </div>
+        <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+        <button type="button" class="btn-outline" (click)="fileInput.click()">
+          {{ coverPreview ? "Alterar Capa" : "Escolher Capa" }}
+        </button>
+      </div>
+
+      <div class="fields-section">
+        <div class="field">
+          <label>Título</label>
+          <input type="text" formControlName="title" placeholder="Insira o título do livro." />
+        </div>
+        
+        <div class="field">
+          <label>Autor</label>
+          <input type="text" formControlName="author" placeholder="Insira o nome do autor." />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Qtd.</label>
+            <input type="number" formControlName="quantity" placeholder="0"/>
+          </div>
+          <div class="field">
+            <label>Preço</label>
+            <input type="text" formControlName="price" placeholder="R$ 0,00" />
+          </div>
+          <div class="field">
+            <label>Páginas</label>
+            <input type="number" formControlName="pageNumber" placeholder="0"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Descrição</label>
+          <textarea formControlName="description" rows="4" placeholder="Breve resumo da obra..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="cancel()" class="btn-link">Descartar</button>
+      <button type="submit" [disabled]="bookForm.invalid" class="btn-primary">
+        Confirmar Cadastro
+      </button>
+    </div>
+  </form>
+</div>
