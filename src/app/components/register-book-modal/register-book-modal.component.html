@@ -30,6 +30,10 @@
           <label>Autor</label>
           <input type="text" formControlName="author" placeholder="Insira o nome do autor." />
         </div>
+        <div class="field">
+          <label>Gênero</label>
+          <app-multi-select-genres formControlName="bookGenre" [genres]="availableGenres"></app-multi-select-genres>
+        </div>
 
         <div class="field-row">
           <div class="field">

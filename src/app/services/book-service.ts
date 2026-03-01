@@ -24,13 +24,20 @@ export class BookService {
     formData.append('book', bookBlob);
     formData.append('title', book.title);
     formData.append('author', book.author);
+    formData.append('price', book.price.toString());
+    formData.append('description', book.description);
+    formData.append('pageNumbers', book.pageNumbers.toString())
+    formData.append('quantity', book.quantity.toString())
+    if (book.bookGenre && Array.isArray(book.bookGenre)) {
+      book.bookGenre.forEach((g: any) => {
+        const id = g.genreId ? g.genreId : g;
+        formData.append('genreIds', id.toString());
+      })
+    }
 
     if (bookCover) {
       formData.append('bookCover', bookCover);
     }
-    formData.append('pageNumbers', `${book.pageNumbers}`)
-    formData.append('quantity', `${book.quantity}`)
-    
     return this.http.post<Book>(`${this.apiUrl}/books`, formData, { headers });
   }
 }

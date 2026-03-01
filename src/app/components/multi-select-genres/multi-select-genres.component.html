@@ -1,0 +1,27 @@
+<div class="select-genres-container" [class.disabled]="disabled">
+  <div class="selection-genre" (click)="toggleDropdown()">
+    <div class="chip" *ngFor="let item of selecteds">
+      {{ item.genre }}
+      <span class="remove-icon" (click)="removeOption($event, item)"
+        >&times;</span
+      >
+    </div>
+    <input
+      type="text"
+      class="search-input"
+      [placeholder]="selecteds.length > 0 ? '' : placeholder"
+      [value]="searchText"
+      (input)="search($event)"
+      [disabled]="disabled"
+      autocomplete="off"
+    />
+
+    <span class="arrow-icon">&#9662;</span>
+  </div>
+
+  <ul class="dropdown-list" *ngIf="openedDropdown">
+    <li *ngFor="let option of filteredOptions" (click)="selectOption(option)">
+      {{ option.genre }}
+    </li>
+  </ul>
+</div>
