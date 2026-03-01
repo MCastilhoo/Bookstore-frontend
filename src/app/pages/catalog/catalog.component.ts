@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { RegisterBookModalComponent } from '../register-book-modal/register-book-modal.component';
+import { RegisterBookModalComponent } from '../../components/register-book-modal/register-book-modal.component';
 
 @Component({
   selector: 'app-catalog',
