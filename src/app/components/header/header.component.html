@@ -30,13 +30,17 @@
         </mat-menu>
       </ng-container>
 
-      <button *ngIf="!isLoggedIn()" class="button" routerLink="/login">Entrar</button>
+      <button 
+        *ngIf="!isLoggedIn()" 
+        class="button" 
+        (click)="openLoginModal()">
+        Entrar
+      </button>
       
     </div>
   </div>
 
   <div class="header-bottom wrapper-limiter">
-    
     <nav class="main-nav">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a>
       <a routerLink="/catalog" routerLinkActive="active">Catálogo</a>
@@ -50,6 +54,13 @@
         <option value="" disabled selected>Ordenar por</option>
       </select>
     </div>
-    
   </div>
 </header>
+
+@if (isAuthModalOpen()) {
+  <div class="modal-overlay" (click)="closeLoginModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-auth-modal (onClose)="closeLoginModal()"></app-auth-modal>
+    </div>
+  </div>
+}
