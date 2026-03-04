@@ -10,6 +10,9 @@
 
 .book-cover{
     cursor: pointer;
+    width: 100%;
+    aspect-ratio: 3/ 4;
+    object-fit: cover;
 }
 .book-title{
     font-size: 1.2rem;

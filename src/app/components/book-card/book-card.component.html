@@ -2,17 +2,17 @@
   <div book-grid>
     <a routerLink="/detalhes-do-livro" class="book-cover-link">
       <img
-        src=""
-        alt="Capa do livro Dom Casmurro de Machado de Assis"
+        [src]="book.bookCover"
+        [alt]=" 'Capa do livro ' + book.title"
         class="book-cover"
       />
     </a>
 
     <div class="book-content">
-      <h3 class="book-title">Dom Casmurro</h3>
-      <p class="author-name">Machado de Assis</p>
+      <h3 class="book-title">{{ book.title }}</h3>
+      <p class="author-name">{{ book.author }}s</p>
       <div class="book-footer">
-        <data class="price" value="49.90">R$ 49,90</data>
+        <data class="price" [value]="book.price">R$ {{ book.price}}</data>
         <button type="button" class="btn-buy">Comprar</button>
       </div>
     </div>

@@ -40,4 +40,8 @@ export class BookService {
     }
     return this.http.post<Book>(`${this.apiUrl}/books`, formData, { headers });
   }
+
+  getAllBooks():Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.apiUrl}/books`)
+  }
 }
