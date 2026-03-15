@@ -25,7 +25,7 @@ export class BookService {
     formData.append('title', book.title);
     formData.append('author', book.author);
     formData.append('price', book.price.toString());
-    formData.append('description', book.description);
+    formData.append('description', book.synopsis);
     formData.append('pageNumbers', book.pageNumbers.toString())
     formData.append('quantity', book.quantity.toString())
     if (book.bookGenre && Array.isArray(book.bookGenre)) {
@@ -43,5 +43,9 @@ export class BookService {
 
   getAllBooks():Observable<Book[]> {
     return this.http.get<Book[]>(`${this.apiUrl}/books`)
+  }
+
+  searchBook(term: string):Observable<Book[]>{
+    return this.http.get<Book[]>(`${this.apiUrl}/books/search?q=${term}`)
   }
 }
