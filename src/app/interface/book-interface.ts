@@ -1,7 +1,7 @@
 export interface Book {
     bookCover: string;
     title: string;
-    description: string;
+    synopsis: string;
     pageNumbers: number;
     author: string;
     bookGenre: string[];

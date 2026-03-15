@@ -33,7 +33,7 @@ export class RegisterBookModalComponent implements OnInit {
     title: ['', [Validators.required, Validators.minLength(3)]],
     author: ['', [Validators.required, Validators.minLength(3)]],
     price: [0, [Validators.required, Validators.min(0.01)]],
-    description: ['', [Validators.required, Validators.minLength(10)]],
+    synopsis: ['', [Validators.required, Validators.minLength(10)]],
     pageNumbers: [0, [Validators.required, Validators.min(1)]],
     quantity: [0, [Validators.required, Validators.min(1)]],
     bookGenre: [[], [Validators.required]],
