@@ -1,5 +1,5 @@
-import { Component, inject, Signal, signal } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import { Component, inject, signal } from "@angular/core";
+import { Router, RouterModule } from "@angular/router";
 import { NgIf } from "@angular/common";
 import { MatIconModule } from "@angular/material/icon"
 import { AuthService } from "../../services/auth.service";
@@ -23,6 +23,7 @@ import { MatMenuModule } from "@angular/material/menu";
 })
 export class HeaderComponent {
     private authService = inject(AuthService)
+    private router = inject(Router)
     user = this.authService.user;
     isLoggedIn = this.authService.isLoggedIn;
 
@@ -34,5 +35,11 @@ export class HeaderComponent {
 
     closeLoginModal() {
         this.isAuthModalOpen.set(false);
+    }
+
+    search(term: string){
+        this.router.navigate(['/catalog/search'], {
+            queryParams: {q: term}
+        })
     }
 }

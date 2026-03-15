@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterBookModalComponent } from '../../components/register-book-modal/register-book-modal.component';
 import { BookCardComponent } from '../../components/book-card/book-card.component';
@@ -17,12 +17,20 @@ import { CommonModule } from '@angular/common';
 export class CatalogComponent implements OnInit {
   private bookService = inject(BookService);
   private dialog = inject(MatDialog);
+  private route = inject(ActivatedRoute);
 
   books: Book[] = [];
   isLoadingBooks: boolean = true;
   ngOnInit() {
-    this.loadBooks();
-  };
+    this.route.queryParams.subscribe((params) => {
+      const searchTerm = params['q'];
+      if (searchTerm) {
+        this.searchBooks(searchTerm);
+      } else {
+        this.loadBooks();
+      }
+    });
+  }
   openRegisterBookModal() {
     const dialogRef = this.dialog.open(RegisterBookModalComponent, {
       width: '800px',
@@ -41,6 +49,21 @@ export class CatalogComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao buscar os livros: ', err);
+      },
+    });
+  }
+
+  searchBooks(term: string) {
+    this.isLoadingBooks = true;
+    this.bookService.searchBook(term).subscribe({
+      next: (booksFromDb) => {
+        this.books = booksFromDb;
+        this.isLoadingBooks = false;
+      },
+      error: (err) => {
+        console.error('Erro na busca: ', err);
+        this.books = [];
+        this.isLoadingBooks = false;
       },
     });
   }
