@@ -1,0 +1,56 @@
+@if (book$ | async; as book) {
+  <div class="main-wrapper">
+    <nav class="breadcrumb">Livros & Letras · {{ book.title }}</nav>
+
+    <section class="product-info-grid">
+      <div class="book-visual-column">
+        <div class="image-wrapper">
+          <img [src]="book.bookCover" [alt]="book.title" />
+        </div>
+        <div class="genres-container">
+          @for (genre of book.genres; track genre) {
+            <span class="genre-tag">{{ genre }}</span>
+          }
+        </div>
+      </div>
+
+      <div class="book-details-column">
+        <h1 class="book-title">{{ book.title }}</h1>
+        <p class="book-author">{{ book.author }}</p>
+
+        <div class="price">R$ {{ book.price }}</div>
+
+        <div class="actions">
+          <button class="btn-add">Adicionar ao carrinho</button>
+          <button class="btn-wishlist">♡</button>
+        </div>
+
+        <div class="tabs-description">
+          <div class="tab-header">
+            <strong>Sinopse</strong> | Lista de Desejos
+          </div>
+          <div class="synopsis-text">
+            <p>{{ book.synopsis }}</p>
+          </div>
+        </div>
+
+        <div class="technical-info">
+          <table>
+            <tr>
+              <td>Páginas</td>
+              <td>{{ book.pageNumbers }}</td>
+            </tr>
+            <tr>
+              <td>Editora</td>
+              <td>Darkness Love</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+} @else {
+  <div class="loading-container">
+    <p>Buscando detalhes do livro...</p>
+  </div>
+}

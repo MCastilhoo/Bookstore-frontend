@@ -9,10 +9,21 @@ import { BookDetailsComponent } from './pages/book-details/book-details.componen
 export const routes = [
   { path: '', component: HomeComponent },
   {
-    path: 'catalog',
-    component: CatalogComponent,
-    children: [{ path: 'search', component: CatalogComponent }],
+    path: 'catalogo',
+    children: [
+      {
+        path: '',
+        component: CatalogComponent, // Abre em: localhost/catalogo
+      },
+      {
+        path: 'search',
+        component: CatalogComponent, // Abre em: localhost/catalogo/search
+      },
+      {
+        path: 'livro/:slug',
+        component: BookDetailsComponent, // Abre em: localhost/catalogo/livro/nome-do-livro
+      },
+    ],
   },
   { path: 'email-confirmation', component: EmailConfirmationComponent },
-  { path: 'teste', component: BookDetailsComponent },
 ];
