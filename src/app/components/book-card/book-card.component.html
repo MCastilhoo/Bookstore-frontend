@@ -1,6 +1,6 @@
-<article class="book-card-container">
+<article class="book-card-container" [routerLink]="['/catalogo/livro', book.slug]">
   <div book-grid>
-    <a routerLink="/detalhes-do-livro" class="book-cover-link">
+    <a class="book-cover-link">
       <img
         [src]="book.bookCover"
         [alt]=" 'Capa do livro ' + book.title"
@@ -10,7 +10,7 @@
 
     <div class="book-content">
       <h3 class="book-title">{{ book.title }}</h3>
-      <p class="author-name">{{ book.author }}s</p>
+      <p class="author-name">{{ book.author }}</p>
       <div class="book-footer">
         <data class="price" [value]="book.price">R$ {{ book.price}}</data>
         <button type="button" class="btn-buy">Comprar</button>
