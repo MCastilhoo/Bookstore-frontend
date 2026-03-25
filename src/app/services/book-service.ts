@@ -28,8 +28,8 @@ export class BookService {
     formData.append('description', book.synopsis);
     formData.append('pageNumbers', book.pageNumbers.toString())
     formData.append('quantity', book.quantity.toString())
-    if (book.bookGenre && Array.isArray(book.bookGenre)) {
-      book.bookGenre.forEach((g: any) => {
+    if (book.genres && Array.isArray(book.genres)) {
+      book.genres.forEach((g: any) => {
         const id = g.genreId ? g.genreId : g;
         formData.append('genreIds', id.toString());
       })
@@ -48,4 +48,9 @@ export class BookService {
   searchBook(term: string):Observable<Book[]>{
     return this.http.get<Book[]>(`${this.apiUrl}/books/search?q=${term}`)
   }
+
+  getBookBySlug(slug: string): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/books/livro/${slug}`);
+  }
+
 }
