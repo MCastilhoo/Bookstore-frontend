@@ -38,7 +38,7 @@ export class HeaderComponent {
     }
 
     search(term: string){
-        this.router.navigate(['/catalog/search'], {
+        this.router.navigate(['/catalogo/search'], {
             queryParams: {q: term}
         })
     }
