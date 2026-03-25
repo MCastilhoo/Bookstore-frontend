@@ -4,7 +4,8 @@ export interface Book {
     synopsis: string;
     pageNumbers: number;
     author: string;
-    bookGenre: string[];
+    genres: string[];
     quantity: number;
     price: number;
+    slug: string;
 }
