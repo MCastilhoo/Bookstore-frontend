@@ -1,39 +1,39 @@
-@import 'ngx-toastr/toastr';
+@import "ngx-toastr/toastr";
 
 :root {
-    --primary-color: #FAF9F6;
-    --secondary-color: #2E4A3F;
-    --tertiary-color: #C5A880;
-    --quarteary-color: #C88F33
+  --primary-color: #faf9f6;
+  --secondary-color: #2e4a3f;
+  --tertiary-color: #c5a880;
+  --quarteary-color: #c88f33; 
+  --text-gray: #666;
+  --text-black: #1a1a1a;
 }
 
 body {
-    background-color: var(--primary-color);
-    height: 100%;
-    margin: 0;
+  background-color: var(--primary-color);
+  height: 100%;
+  margin: 0;
 }
 
-
 .main-content {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .content-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .toast-container {
-    top: 100px !important;
-    right: 20px !important;
-    z-index: 9999 !important; 
+  top: 100px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
 }
 
 .toast-success {
-    background-color: var(--secondary-color) !important;
-    color: var(--quarteary-color) !important;
-
+  background-color: var(--secondary-color) !important;
+  color: var(--quarteary-color) !important;
 }
