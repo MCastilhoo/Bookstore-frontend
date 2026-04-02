@@ -8,7 +8,7 @@
 
 body {
   background-color: var(--bg-creme);
-  font-family: "Georgia", serif; /* Fontes serifadas trazem elegância */
+  font-family: "Georgia", serif; 
   margin: 0;
   color: var(--text-black);
 }
@@ -18,8 +18,23 @@ body {
   margin: 0 auto;
   padding: 40px 20px;
 }
+.btn-wishlist {
+  background: white;
+  border: 1px solid #ddd;
+  width: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Breadcrumb */
+.title-container{
+  display: flex;
+  gap: 15px;
+}
+
 .breadcrumb {
   font-size: 0.85rem;
   color: var(--text-gray);
@@ -115,17 +130,7 @@ body {
   opacity: 0.9;
 }
 
-.btn-wishlist {
-  background: white;
-  border: 1px solid #ddd;
-  width: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .tab-header,
 .info-tabs {
@@ -159,7 +164,7 @@ body {
 }
 
 .active {
-  border-bottom: 2px solid var(--gold);
+  border-bottom: 2px solid var(--quarteary-color);
   padding-bottom: 8px;
   font-weight: bold;
 }

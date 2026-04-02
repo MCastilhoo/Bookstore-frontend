@@ -50,7 +50,25 @@ export class BookService {
   }
 
   getBookBySlug(slug: string): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/books/livro/${slug}`);
+    const token = this.authService.getAccessToken();
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    return this.http.get<Book>(`${this.apiUrl}/books/livro/${slug}`, { headers });
   }
 
+  favoriteBook(slug: string): Observable<any>{
+    const headers = new HttpHeaders ({
+      Authorization: `Bearer ${this.authService.getAccessToken()}`
+    });
+    return this.http.post(`${this.apiUrl}/books/livro/${slug}/favorite`, {}, {headers})
+  }
+
+  unfavoriteBook(slug: string): Observable<any>{
+    const headers = new HttpHeaders ({
+      Authorization: `Bearer ${this.authService.getAccessToken()}`
+    });
+    return this.http.delete(`${this.apiUrl}/books/livro/${slug}/unfavorite`, {headers});
+  }
 }

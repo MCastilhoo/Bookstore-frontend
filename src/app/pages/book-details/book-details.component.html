@@ -15,19 +15,32 @@
       </div>
 
       <div class="book-details-column">
-        <h1 class="book-title">{{ book.title }}</h1>
+        <div class="title-container">
+          <h1 class="book-title">{{ book.title }}</h1>
+          <button
+            class="btn-wishlist"
+            (click)="toggleFavorite(book.slug)"
+            [class.favorited]="isFavorite"
+          >
+            <fa-icon
+              [icon]="
+                isFavorite ? heartSolid : heartRegular
+              "
+            ></fa-icon>
+          </button>
+        </div>
         <p class="book-author">{{ book.author }}</p>
 
         <div class="price">R$ {{ book.price }}</div>
 
         <div class="actions">
           <button class="btn-add">Adicionar ao carrinho</button>
-          <button class="btn-wishlist">♡</button>
+          <button class="btn-add">Comprar Agora</button>
         </div>
 
         <div class="tabs-description">
           <div class="tab-header">
-            <strong>Sinopse</strong> | Lista de Desejos
+            <strong>Sinopse</strong>
           </div>
           <div class="synopsis-text">
             <p>{{ book.synopsis }}</p>
@@ -37,7 +50,7 @@
         <div class="technical-info">
           <table>
             <tr>
-              <td>Páginas</td>
+              <td>Numero de Páginas</td>
               <td>{{ book.pageNumbers }}</td>
             </tr>
             <tr>
